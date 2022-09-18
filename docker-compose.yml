@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  rpi-spotify:
+    image: sbachstein/raspotify
+    build:
+      context: .
+    network_mode: host
+    restart: always
+    devices:
+      - /dev/snd:/dev/snd
+    environment:
+      - SPOTIFY_NAME=HiFi
+      - EQUALIZATION=rock
+      - ALSA_SLAVE_PCM=plughw:3
